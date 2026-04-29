@@ -166,23 +166,20 @@ def event_loop(state: MessagesState):
         return END
     return "execute_tools"
 
-"""def event_loop(state: MessagesState):
-    # 1. Initialize a counter
-    tool_message_count = 0
+# def event_loop(state: MessagesState):
+#     tavily_call_count = 0
     
-    # 2. Iterate through every message in the state
-    for message in state["messages"]:
-        # 3. Check if the message is a ToolMessage
-        if isinstance(message, ToolMessage):
-            tool_message_count += 1
-            
-        # 4. Manual break (Optional but efficient)
-        # If we already hit 2, we don't need to check the rest of the list
-        if tool_message_count >= 2:
-            return END
-
-    # 5. If we finished the loop and didn't hit 2, continue the cycle
-    return "execute_tools""""
+#     for m in state["messages"]:
+#         # If the message comes from the Tavily search tool
+#         if isinstance(m, ToolMessage):
+#             tavily_call_count += 1
+    
+#     # If Tavily has already searched 2 times, stop and give the final answer
+#     if tavily_call_count >= 2:
+#         return END
+    
+#     # Otherwise, go back and allow another search
+#     return "execute_tools"
 
 # +---------------------------+
 # |           START           |
