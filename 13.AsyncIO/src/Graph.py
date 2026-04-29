@@ -2,6 +2,7 @@ from typing import Any
 from langgraph.graph import StateGraph, START, END
 from src.State import AgentState
 from src.nodes import PlanningNode, VectorSearchNode, WebSearchNode, MergeNode, AnalysisNode, ReportNode, need_web_fallback
+
 # =============================================================================
 # BUILD GRAPH
 # =============================================================================

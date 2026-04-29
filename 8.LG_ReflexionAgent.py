@@ -57,18 +57,19 @@ class ReviseAnswer(AnswerQuestion):
 # -----------------------------
 actor_prompt_template = ChatPromptTemplate.from_messages([
     ("system", """You are expert researcher. Current time: {time}
-1. {first_instruction}
-2. Reflect and critique your answer.
-3. Recommend search queries to research information."""),
+        1. {first_instruction}
+        2. Reflect and critique your answer.
+        3. Recommend search queries to research information."""),
     MessagesPlaceholder(variable_name="messages"),
-]).partial(time=lambda: datetime.datetime.now().isoformat())
+        ]).partial(time=lambda: datetime.datetime.now().isoformat())
 
 first_responder_prompt_template = actor_prompt_template.partial(
     first_instruction="Provide a detailed answer."
 )
 
 revise_instruction = """Revise your previous answer. Use numerical citations [1], [2].
-Keep the answer under 100 words. Add a References section at the bottom."""
+                        Keep the answer under 100 words. Add a References section at 
+                        the bottom."""
 
 revisor_prompt_template = actor_prompt_template.partial(
     first_instruction=revise_instruction
@@ -164,6 +165,24 @@ def event_loop(state: MessagesState):
     if count_tool_visit >= 2:
         return END
     return "execute_tools"
+
+"""def event_loop(state: MessagesState):
+    # 1. Initialize a counter
+    tool_message_count = 0
+    
+    # 2. Iterate through every message in the state
+    for message in state["messages"]:
+        # 3. Check if the message is a ToolMessage
+        if isinstance(message, ToolMessage):
+            tool_message_count += 1
+            
+        # 4. Manual break (Optional but efficient)
+        # If we already hit 2, we don't need to check the rest of the list
+        if tool_message_count >= 2:
+            return END
+
+    # 5. If we finished the loop and didn't hit 2, continue the cycle
+    return "execute_tools""""
 
 # +---------------------------+
 # |           START           |

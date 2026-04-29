@@ -43,7 +43,7 @@ async def Analyze(
     return {"topic": topic, "summary": resp.content}
 
 
-async def BatchAnalyze(items: List[Dict[str, Any]], settings: Parameter) -> List[Dict[str, str]]:
+async def BatchAnalyzellm(items: List[Dict[str, Any]], settings: Parameter) -> List[Dict[str, str]]:
     """
     - asyncio.TaskGroup structured concurrency
     - asyncio.Semaphore to limit concurrent LLM calls

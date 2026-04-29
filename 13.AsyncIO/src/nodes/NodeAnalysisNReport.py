@@ -1,9 +1,9 @@
 from typing import Any, Dict
 from langchain_core.messages import AIMessage
 from src.State import AgentState
-from src.artifact.Analysis import BatchAnalyze, FormatReport
+from src.artifact.Analysis import BatchAnalyzellm, FormatReport
 async def AnalysisNode(state: AgentState) -> Dict[str, Any]:
-    analyses = await BatchAnalyze(state["merged_items"], state["settings"])
+    analyses = await BatchAnalyzellm(state["merged_items"], state["settings"])
     return {
         "analyses": analyses,
         "messages": [AIMessage(content=f"Analysis complete: {len(analyses)} summaries generated.")]

@@ -6,7 +6,7 @@ from .Settings import Parameter, GetVectorStore, _format_docs
 # 2. Import logic that depends on settings
 from .VectorSearch import BatchVectorSearch, Vector
 from .WebSearch import BatchWebSearch, Web
-from .Analysis import Analyze, BatchAnalyze, FormatReport
+from .Analysis import Analyze, BatchAnalyzellm, FormatReport
 
 __all__ = [
     "Parameter",
@@ -17,6 +17,6 @@ __all__ = [
     "BatchWebSearch",
     "Web",
     "Analyze",
-    "BatchAnalyze",
+    "BatchAnalyzellm",
     "FormatReport",
 ]
